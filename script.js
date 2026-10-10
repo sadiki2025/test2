@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const checkoutTotal = document.querySelector('.checkout-total');
   const cartRecommendations = document.querySelector('.cart-recommendations-grid');
   const cartStorageKey = 'sadiki-cart';
-  const whatsappOrderNumber = '212716166582';
+  const whatsappOrderNumber = document.body.dataset.whatsappOrderNumber;
   let mapUpdateTimer;
 
   const promoSlider = document.querySelector('.promo-slider');
