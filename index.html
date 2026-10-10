@@ -1,0 +1,559 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيتزا هت</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="main-header">
+  <div class="header-container">
+    <div class="header-left">
+      <button class="login-btn" type="button">تسجيل دخول</button>
+      <button class="header-icon" aria-label="السلة">
+        <i class="fa-solid fa-bag-shopping"></i>
+      </button>
+      <div class="language-switcher" aria-label="اختر لغة الموقع">
+        <i class="fa-solid fa-language" aria-hidden="true"></i>
+        <div id="google_translate_element"></div>
+      </div>
+    </div>
+    <p class="welcome-message">أهلاً وسهلاً</p>
+
+    <div class="header-right">
+      <nav class="main-nav" aria-label="التنقل الرئيسي">
+        <a href="#" class="nav-link active">الاستلام المباشر</a>
+        <a href="#" class="nav-link">توصيل</a>
+      </nav>
+      <div class="brand-wrap" aria-label="العلامة التجارية">
+        <span class="brand-text">بيتزا</span>
+        <button class="mobile-menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">
+          <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-title-bar header-menu-title" aria-label="عنوان القائمة">
+    <span class="menu-title-line"></span>
+    <h2 class="menu-title">قائمة</h2>
+    <span class="menu-title-line"></span>
+  </div>
+</header>
+
+<section class="promo-slider" aria-label="عروض بيتزا هت" aria-roledescription="عارض شرائح">
+  <div class="promo-slides">
+    <article class="promo-slide active" aria-roledescription="شريحة">
+      <div class="promo-copy">
+        <span class="promo-kicker">عرض لفترة محدودة</span>
+        <h1><strong>خصم 50%</strong><span>على جميع البيتزا</span></h1>
+        <a class="promo-cta" href="#offers">اطلب الآن</a>
+      </div>
+      <img src="images/pasta2.png" alt="بيتزا مشكلة طازجة">
+    </article>
+    <article class="promo-slide" aria-roledescription="شريحة" aria-hidden="true">
+      <div class="promo-copy">
+        <span class="promo-kicker">وجبتك المفضلة بانتظارك</span>
+        <h2><strong>نكهة لا تُقاوم</strong><span>مع كل قطعة بيتزا</span></h2>
+        <a class="promo-cta" href="#offers">اكتشف القائمة</a>
+      </div>
+      <img src="images/pasta1.png" alt="بيتزا بالجبن والأعشاب">
+    </article>
+    <article class="promo-slide" aria-roledescription="شريحة" aria-hidden="true">
+      <div class="promo-copy">
+        <span class="promo-kicker">شاركها مع من تحب</span>
+        <h2><strong>بيتزا للجميع</strong><span>لحظات ألذ تبدأ هنا</span></h2>
+        <a class="promo-cta" href="#offers">تصفح العروض</a>
+      </div>
+      <img src="images/pasta3.png" alt="بيتزا شهية للمشاركة">
+    </article>
+  </div>
+  <button class="promo-arrow promo-arrow-previous" type="button" aria-label="العرض السابق">
+    <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+  </button>
+  <button class="promo-arrow promo-arrow-next" type="button" aria-label="العرض التالي">
+    <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <div class="promo-indicators" aria-label="اختيار العرض">
+    <button class="promo-indicator active" type="button" aria-label="العرض 1" aria-current="true"></button>
+    <button class="promo-indicator" type="button" aria-label="العرض 2" aria-current="false"></button>
+    <button class="promo-indicator" type="button" aria-label="العرض 3" aria-current="false"></button>
+  </div>
+</section>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav class="mobile-nav" aria-label="القائمة المحمولة">
+    <a href="#">Shop</a>
+  </nav>
+</div>
+
+<div class="delivery-modal" id="deliveryModal" aria-hidden="true">
+  <div class="delivery-modal-panel" role="dialog" aria-modal="true" aria-labelledby="deliveryTitle">
+    <button class="delivery-close" type="button" aria-label="إغلاق">×</button>
+    <h3 id="deliveryTitle">حدد موقعك</h3>
+
+    <div class="delivery-search-area">
+      <div class="delivery-address-box">
+        <a class="delivery-map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Casablanca%2C%20Morocco" target="_blank" rel="noopener noreferrer" aria-label="البحث عن المنطقة في Google Maps">
+          <i class="fa-solid fa-location-dot"></i>
+        </a>
+        <input type="text" class="delivery-location-input" placeholder="أدخل منطقتك" aria-label="أدخل منطقتك" autocomplete="off" aria-autocomplete="list" aria-controls="regionSuggestions">
+      </div>
+      <ul class="region-suggestions" id="regionSuggestions" role="listbox" aria-label="اقتراحات المناطق"></ul>
+    </div>
+
+    <div class="delivery-map-container">
+      <iframe class="delivery-map-frame" title="خريطة الدار البيضاء" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Casablanca%2C%20Morocco&amp;z=13&amp;output=embed"></iframe>
+    </div>
+
+    <div class="delivery-message-box">
+      <p>لأن لا توصل إلى هذا العنوان، يمكنك تحديد موقعك الحالي لتحديد المنطقة المتاحة للتوصيل.</p>
+    </div>
+
+    <div class="delivery-footer">
+      <button class="delivery-submit-btn" type="button">إبدأ الطلب</button>
+    </div>
+  </div>
+</div>
+
+<div class="pickup-modal" id="pickupModal" aria-hidden="true">
+  <div class="pickup-modal-panel" role="dialog" aria-modal="true" aria-labelledby="pickupTitle">
+    <button class="pickup-close" type="button" aria-label="إغلاق">×</button>
+    <h3 id="pickupTitle">استلم طلبك</h3>
+
+    <label class="pickup-search">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" class="pickup-search-input" placeholder="ابحث عن الفرع" aria-label="ابحث عن الفرع">
+    </label>
+
+    <div class="pickup-store-list">
+      <article class="pickup-store-card" data-store="Vélodrome">
+        <div class="pickup-store-details">
+          <h4>Vélodrome</h4>
+          <p>Rue Ahmed Charci – Résidence Jinane</p>
+          <strong>وقت الاستلام: 12:00 PM – 11:00 PM</strong>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Pizza+Hut+Velodrome+Casablanca" target="_blank" rel="noopener noreferrer" class="pickup-directions">احصل على الاتجاهات</a>
+      </article>
+
+      <article class="pickup-store-card" data-store="Test Store">
+        <div class="pickup-store-details">
+          <h4>Test Store</h4>
+          <p>Test Location</p>
+          <strong>وقت الاستلام: 12:00 PM – 11:00 PM</strong>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Pizza+Hut+Casablanca" target="_blank" rel="noopener noreferrer" class="pickup-directions">احصل على الاتجاهات</a>
+      </article>
+
+      <article class="pickup-store-card" data-store="Ait Souss Agadir">
+        <div class="pickup-store-details">
+          <h4>Ait Souss Agadir</h4>
+          <p>الدار البيضاء، المغرب</p>
+          <strong>وقت الاستلام: 12:00 PM – 11:00 PM</strong>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Ait+Souss+Casablanca" target="_blank" rel="noopener noreferrer" class="pickup-directions">احصل على الاتجاهات</a>
+      </article>
+      <p class="pickup-no-results" hidden>لا توجد فروع مطابقة للبحث.</p>
+    </div>
+
+    <button class="pickup-order-btn" type="button" disabled>اختر فرعًا لبدء طلبك</button>
+  </div>
+</div>
+
+<div class="menu-page-container" dir="rtl">
+  <div class="categories-slider">
+    <button class="categories-slider-arrow" type="button" data-scroll="previous" aria-label="التصنيفات السابقة">
+      <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+    </button>
+    <div class="categories-scroller">
+      <div class="categories-container">
+        <button class="category-item active" data-category="offers">عرض</button>
+        <button class="category-item" data-category="half-half">Half &amp; Half</button>
+        <button class="category-item" data-category="crafted-flatz">كرافتد فلاتز</button>
+        <button class="category-item" data-category="margherita">مارغريتا</button>
+        <button class="category-item" data-category="delight">ديلايت</button>
+        <button class="category-item" data-category="inedites">Inedites</button>
+        <button class="category-item" data-category="speciales">Spéciales</button>
+        <button class="category-item" data-category="gourmandes">Gourmandes</button>
+        <button class="category-item" data-category="calzone">كالزون</button>
+        <button class="category-item" data-category="pasta">باستا</button>
+        <button class="category-item" data-category="sandwiches">ساندويتشات</button>
+      </div>
+    </div>
+    <button class="categories-slider-arrow" type="button" data-scroll="next" aria-label="التصنيفات التالية">
+      <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="main-content-layout">
+    <main class="products-section">
+      <div id="offers" class="category-section active">
+        <h2 class="section-title">عرض</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="images/pasta2.png" alt=" بيتزا كبيرة"></div>
+            <div class="product-info">
+              <h3 class="product-name"> بيتزا كبيرة </h3>
+              <span class="product-price">49.00 م د</span>
+              <p class="product-desc">بيتزا وسط من اختيارك + بطاطس + مشروب غازي.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="images/pasta1.png" alt="كومبو التوفير بالبيتزا المشكلة"></div>
+            <div class="product-info">
+              <h3 class="product-name">كومبو التوفير الخارق</h3>
+              <span class="product-price">49.00 م د</span>
+              <p class="product-desc">بيتزا وسط من اختيارك + بطاطس + مشروب غازي.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="images/pasta3.png" alt="كومبو التوفير ببيتزا الخضار"></div>
+            <div class="product-info">
+              <h3 class="product-name">كومبو التوفير الخارق</h3>
+              <span class="product-price">49.00 م د</span>
+              <p class="product-desc">بيتزا وسط من اختيارك + بطاطس + مشروب غازي.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="images/pasta4.png" alt="كومبو التوفير بتصميم بيتزا"></div>
+            <div class="product-info">
+              <h3 class="product-name">كومبو التوفير الخارق</h3>
+              <span class="product-price">49.00 م د</span>
+              <p class="product-desc">بيتزا وسط من اختيارك + بطاطس + مشروب غازي.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="images/pasta5.png" alt="كومبو التوفير مع الشيف"></div>
+            <div class="product-info">
+              <h3 class="product-name">كومبو التوفير الخارق</h3>
+              <span class="product-price">49.00 م د</span>
+              <p class="product-desc">بيتزا وسط من اختيارك + بطاطس + مشروب غازي.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="half-half" class="category-section">
+        <h2 class="section-title">Half &amp; Half</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="images/pasta2.png" alt="بيتزا Half &amp; Half"></div>
+            <div class="product-info">
+              <h3 class="product-name">بيتزا Half &amp; Half</h3>
+              <span class="product-price">68.00 م د</span>
+              <p class="product-desc">نصف لحم، نصف خضار، مع صلصة الطماطم الطازجة والجبن المذاب.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="images/pasta1.png" alt="بيتزا Half &amp; Half بالتشكيلة المشكلة"></div>
+            <div class="product-info">
+              <h3 class="product-name">بيتزا Half &amp; Half بالتشكيلة المشكلة</h3>
+              <span class="product-price">68.00 م د</span>
+              <p class="product-desc">نصف لحم، نصف خضار، مع صلصة الطماطم الطازجة والجبن المذاب.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="images/pasta3.png" alt="بيتزا Half &amp; Half بالخضار"></div>
+            <div class="product-info">
+              <h3 class="product-name">بيتزا Half &amp; Half بالخضار</h3>
+              <span class="product-price">68.00 م د</span>
+              <p class="product-desc">نصف لحم، نصف خضار، مع صلصة الطماطم الطازجة والجبن المذاب.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="images/pasta4.png" alt="بيتزا Half &amp; Half بتصميم بيتزا"></div>
+            <div class="product-info">
+              <h3 class="product-name">بيتزا Half &amp; Half</h3>
+              <span class="product-price">68.00 م د</span>
+              <p class="product-desc">نصف لحم، نصف خضار، مع صلصة الطماطم الطازجة والجبن المذاب.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="images/pasta5.png" alt="بيتزا Half &amp; Half مع الشيف"></div>
+            <div class="product-info">
+              <h3 class="product-name">بيتزا Half &amp; Half مع الشيف</h3>
+              <span class="product-price">68.00 م د</span>
+              <p class="product-desc">نصف لحم، نصف خضار، مع صلصة الطماطم الطازجة والجبن المذاب.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="crafted-flatz" class="category-section">
+        <h2 class="section-title">كرافتد فلاتز</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="crafted.png" alt="كرافتد فلاتز"></div>
+            <div class="product-info">
+              <h3 class="product-name">كرافتد فلاتز اللحم والجبن</h3>
+              <span class="product-price">72.00 م د</span>
+              <p class="product-desc">خلطة فاخرة من اللحم المدخن، الجبن، والفطر على قاعدة متماسكة.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="margherita" class="category-section">
+        <h2 class="section-title">مارغريتا</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="margherita.png" alt="مارغريتا"></div>
+            <div class="product-info">
+              <h3 class="product-name">مارغريتا الطازجة</h3>
+              <span class="product-price">54.00 م د</span>
+              <p class="product-desc">صلصة طماطم، جبنة موزاريلا، وأعشاب بصلات مميزة.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="delight" class="category-section">
+        <h2 class="section-title">ديلايت</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="delight.png" alt="ديلايت"></div>
+            <div class="product-info">
+              <h3 class="product-name">ديلايت لحم وجبن</h3>
+              <span class="product-price">60.00 م د</span>
+              <p class="product-desc">تناسب عشاق النكهات الفاخرة مع طبقة متوازنة من اللحم والجبن.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="inedites" class="category-section">
+        <h2 class="section-title">Inedites</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="inedite.png" alt="Inedites"></div>
+            <div class="product-info">
+              <h3 class="product-name">بيتزا إنيديتس</h3>
+              <span class="product-price">77.00 م د</span>
+              <p class="product-desc">مزيج خاص من المكونات مع لمسة مشوية ومذاق فريد.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="speciales" class="category-section">
+        <h2 class="section-title">Spéciales</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="special.png" alt="Spéciales"></div>
+            <div class="product-info">
+              <h3 class="product-name">سبيشالز اللحم والفطر</h3>
+              <span class="product-price">79.00 م د</span>
+              <p class="product-desc">بيتزا خاصة مع أعشاب، لحم، وفطر على قاعدة طازجة.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="gourmandes" class="category-section">
+        <h2 class="section-title">Gourmandes</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="gourmandes.png" alt="غورماند"></div>
+            <div class="product-info">
+              <h3 class="product-name">بيتزا غورماند الفاخرة</h3>
+              <span class="product-price">82.00 م د</span>
+              <p class="product-desc">اشتريها للعشاء واستمتع بمذاق غني ومريح ومشرّب بصلصة خاصة.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="calzone" class="category-section">
+        <h2 class="section-title">كالزون</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="calzone.png" alt="كالزون دجاج"></div>
+            <div class="product-info">
+              <h3 class="product-name">كالزون الدجاج والجبن</h3>
+              <span class="product-price">42.00 م د</span>
+              <p class="product-desc">بيتزا مطوية ومخبوزة بالفرن، محشوة بالدجاج المتبل والموزاريلا السائلة.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="pasta" class="category-section">
+        <h2 class="section-title">باستا</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="pasta.png" alt="باستا الفرن"></div>
+            <div class="product-info">
+              <h3 class="product-name">باستا الجبن والببروني بالفرن</h3>
+              <span class="product-price">38.00 م د</span>
+              <p class="product-desc">مكرونة فوسيلي بصلصة الطماطم الغنية، مغطاة بالجبن والببروني المحمر.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="sandwiches" class="category-section">
+        <h2 class="section-title">ساندويتشات</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrapper"><img src="sub.png" alt="ساندويتش دجاج"></div>
+            <div class="product-info">
+              <h3 class="product-name">ساندويتش سوبريم الدجاج</h3>
+              <span class="product-price">29.00 م د</span>
+              <p class="product-desc">خبز طازج محمص محشو بقطع الدجاج، الخس، الطماطم وصلصة المايونيز بالثوم.</p>
+            </div>
+            <button class="add-to-cart-btn">+ إضافة</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="sidebar-cart">
+      <div class="cart-header">
+        <span class="cart-title">عناصر</span>
+      </div>
+
+      <div class="cart-empty-state">
+        <svg class="cart-empty-illustration" viewBox="0 0 160 120" aria-hidden="true">
+          <path d="M28 14h104v16H28zM36 30l16 38h56l16-38M52 68 30 98h100L108 68M30 98v12h100V98M52 68h56M72 98c0 12 16 12 16 0" />
+        </svg>
+        <p class="cart-empty-title">عفواً! سلة التسوق الخاصة بك فارغة.</p>
+        <p>هل تشعر بالجوع؟ اختر من بين بيتزاتنا الشهية وابدأ في ملء سلتك!</p>
+      </div>
+
+      <div class="cart-items"></div>
+
+      <div class="cart-summary">
+        <div class="cart-total-row">
+          <span>الإجمالي</span>
+          <strong class="cart-total-price">0.00 م د</strong>
+        </div>
+        <input class="checkout-customer-phone" type="tel" inputmode="tel" autocomplete="tel" aria-label="رقم هاتف الزبون" placeholder="رقم هاتفك للتواصل">
+        <textarea class="checkout-notes" aria-label="تعليمات خاصة" placeholder="تعليمات خاصة (اختياري)"></textarea>
+        <button class="print-cart-btn" type="button">طباعة السلة</button>
+        <button class="view-cart-btn">إرسال الطلب</button>
+      </div>
+
+      <div class="cart-footer">
+        <button class="cart-footer-view" type="button">
+          <i class="fa-solid fa-angles-left" aria-hidden="true"></i>
+          <span>عرض سلة التسوق</span>
+        </button>
+        <div class="cart-footer-info" aria-live="polite">
+          <span><strong class="cart-item-count">0</strong> عناصر</span>
+          <span class="cart-footer-divider" aria-hidden="true">|</span>
+          <strong class="cart-footer-total">0 م د</strong>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<section class="full-cart-page" id="fullCartPage" aria-label="سلة التسوق">
+  <div class="full-cart-layout">
+    <main class="full-cart-main">
+      <div class="full-cart-heading">
+        <h1>سلتك</h1>
+        <span><strong class="full-cart-item-count">0</strong> عناصر</span>
+        <button class="print-cart-btn" type="button" disabled>طباعة السلة</button>
+      </div>
+
+      <div class="full-cart-items"></div>
+
+      <div class="full-cart-empty">
+        <svg class="cart-empty-illustration" viewBox="0 0 160 120" aria-hidden="true">
+          <path d="M28 14h104v16H28zM36 30l16 38h56l16-38M52 68 30 98h100L108 68M30 98v12h100V98M52 68h56M72 98c0 12 16 12 16 0" />
+        </svg>
+        <p class="cart-empty-title">عفواً! سلة التسوق الخاصة بك فارغة.</p>
+        <p>هل تشعر بالجوع؟ اختر من بين بيتزاتنا الشهية وابدأ في ملء سلتك!</p>
+        <button class="continue-shopping-btn" type="button">تصفح القائمة</button>
+      </div>
+
+      <section class="cart-recommendations" aria-labelledby="cartRecommendationsTitle">
+        <h2 id="cartRecommendationsTitle">قد يعجبك أيضاً</h2>
+        <div class="cart-recommendations-grid"></div>
+      </section>
+    </main>
+
+    <aside class="checkout-panel">
+      <div class="checkout-discovery">
+        <div>
+          <h2>استكشاف القائمة</h2>
+          <p>أضف المزيد من العناصر</p>
+        </div>
+        <button class="continue-shopping-btn checkout-discovery-arrow" type="button" aria-label="العودة إلى القائمة">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="checkout-promo">
+        <input type="text" aria-label="رمز القسيمة" placeholder="اطلب قسيمة">
+        <button type="button">اطلب</button>
+      </div>
+      <div class="checkout-totals">
+        <p><span>المجموع الفرعي</span><strong class="checkout-subtotal">0.00 م د</strong></p>
+        <p><span>خصم</span><strong>0.00 م د</strong></p>
+        <p><span>VAT (%)</span><strong>0.00 م د</strong></p>
+        <p class="checkout-grand-total"><span>الإجمالي</span><strong class="checkout-total">0.00 م د</strong></p>
+      </div>
+      <input class="checkout-customer-phone" type="tel" inputmode="tel" autocomplete="tel" aria-label="رقم هاتف الزبون" placeholder="رقم هاتفك للتواصل (مثال: 06XXXXXXXX)">
+      <textarea class="checkout-notes" aria-label="تعليمات خاصة" placeholder="تعليمات خاصة (اختياري)"></textarea>
+      <button class="view-cart-btn checkout-pay-btn" type="button">إرسال الطلب عبر واتساب</button>
+    </aside>
+  </div>
+</section>
+
+<div class="product-details-modal" id="productDetailsModal" aria-hidden="true">
+  <section class="product-detail-panel" role="dialog" aria-modal="true" aria-labelledby="productDetailName">
+    <button class="product-details-close" type="button" aria-label="إغلاق">×</button>
+    <div class="product-detail-image-wrap">
+      <img class="product-detail-image" src="images/pasta2.png" alt="">
+    </div>
+    <div class="product-detail-content">
+      <h2 class="product-detail-name" id="productDetailName">بيتزا كبيرة</h2>
+      <p class="product-detail-description"></p>
+      <div class="product-detail-tabs" role="tablist" aria-label="خيارات البيتزا">
+        <button class="product-detail-tab" type="button" role="tab" aria-selected="false">القشرة ل بيتزا كبيرة</button>
+        <button class="product-detail-tab active" type="button" role="tab" aria-selected="true">اختر نكهتين ل بيتزا كبيرة</button>
+      </div>
+      <label class="product-detail-choice">
+        <input type="radio" name="productDetailChoice" value="مقلّاة" checked>
+        <span>مقلّاة</span>
+        <img src="images/pasta1.png" alt="">
+        <span class="product-detail-radio" aria-hidden="true"></span>
+      </label>
+      <div class="product-detail-actions">
+        <button class="product-detail-add" type="button">أضف إلى السلة بـ <span class="product-detail-total">0.00 م د</span></button>
+        <div class="product-detail-quantity" aria-label="الكمية">
+          <button class="product-detail-quantity-decrease" type="button" aria-label="إنقاص الكمية">−</button>
+          <span class="product-detail-quantity-value" aria-live="polite">1</span>
+          <button class="product-detail-quantity-increase" type="button" aria-label="زيادة الكمية">+</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="script.js"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
